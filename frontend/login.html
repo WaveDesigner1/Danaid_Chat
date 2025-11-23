@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danaid Chat – Logowanie / Rejestracja</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+
+<body>
+  <div class="butterfly-bg"></div>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <h1 class="main-title">Chat Danaid</h1>
+  </header>
+
+  <div class="container">
+    <!-- LEWA STRONA - INFO -->
+    <div class="info-section">
+      <h3 class="subtitle">Bezpieczny czat z szyfrowaniem end-to-end</h3>
+
+      <div class="description">
+        <p>
+          Ten projekt to modułowy, edukacyjny czat z pełnym E2EE, własnym mechanizmem logowania,
+          podpisami RSA, PBKDF2 i lokalnym przechowywaniem klucza prywatnego.
+        </p>
+        <p>
+          Wersja lokalna działa na Twoim komputerze, bez serwerów zewnętrznych.
+        </p>
+      </div>
+
+      <ul class="features">
+        <li>🔐 Szyfrowanie RSA + PBKDF2</li>
+        <li>🛡️ Podpisy cyfrowe</li>
+        <li>📡 Zero zewnętrznego backendu</li>
+        <li>👥 System znajomych</li>
+        <li>💬 Pełne E2EE</li>
+      </ul>
+    </div>
+
+    <!-- PRAWA STRONA – FORMULARZE -->
+    <div class="login-section">
+      <div class="login-container">
+
+        <div class="auth-tabs">
+          <button class="tab active" data-tab="login">Logowanie</button>
+          <button class="tab" data-tab="register">Rejestracja</button>
+        </div>
+
+        <!-- LOGOWANIE -->
+        <div id="login-form" class="auth-form active">
+          <h2 class="login-title">Zaloguj się</h2>
+
+          <form id="login-form-element">
+            <div class="form-group">
+              <label for="login-username">Nazwa użytkownika</label>
+              <input type="text" id="login-username" placeholder="Twoja nazwa" autocomplete="username" required />
+            </div>
+
+            <div class="form-group">
+              <label for="login-password">Hasło</label>
+              <input type="password" id="login-password" placeholder="Hasło" autocomplete="current-password" required />
+            </div>
+
+            <div class="form-group">
+              <label for="login-pem-file">Klucz prywatny (.pem)</label>
+              <input type="file" id="login-pem-file" accept=".pem,.txt" required />
+              <small>Wybierz klucz pobrany podczas rejestracji</small>
+            </div>
+
+            <button class="login-btn" type="submit">Zaloguj się</button>
+
+            <div id="login-status" class="login-status"></div>
+          </form>
+        </div>
+
+        <!-- REJESTRACJA -->
+        <div id="register-form" class="auth-form">
+          <h2 class="login-title">Utwórz konto</h2>
+
+          <form id="register-form-element">
+            <div class="form-group">
+              <label for="register-username">Nazwa użytkownika</label>
+              <input type="text" id="register-username" minlength="3" maxlength="32" pattern="[a-zA-Z0-9_]+" required />
+              <small>Dozwolone: litery, cyfry, _</small>
+            </div>
+
+            <div class="form-group">
+              <label for="register-password">Hasło</label>
+              <input type="password" id="register-password" minlength="8" required />
+              <small>Min. 8 znaków: duża litera, cyfra, symbol</small>
+            </div>
+
+            <div class="form-group">
+              <label for="register-password-repeat">Powtórz hasło</label>
+              <input type="password" id="register-password-repeat" required />
+            </div>
+
+            <button class="login-btn" type="submit">Utwórz konto</button>
+
+            <div id="register-status" class="login-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL KLUCZA PRIVATE KEY -->
+  <div id="key-download-modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Twój klucz prywatny</h3>
+        <button class="modal-close" id="key-modal-close">×</button>
+      </div>
+
+      <div class="modal-body">
+        <p>
+          Poniżej możesz pobrać swój klucz prywatny (.pem).  
+          Przechowuj go lokalnie – **bez niego nie zalogujesz się do konta**.
+        </p>
+
+        <button id="download-key-btn" class="action-btn">Pobierz klucz .pem</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERLAY ŁADOWANIA -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Przetwarzanie…</div>
+    </div>
+  </div>
+
+  <!-- TOASTY -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- SKRYPTY -->
+  <script src="form-tabs.js"></script>
+  <script type="module" src="register.js"></script>
+  <script type="module" src="login.js"></script>
+</body>
+</html>

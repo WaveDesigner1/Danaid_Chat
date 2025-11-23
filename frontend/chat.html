@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danaid – Czat</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+    <div class="app-shell">
+        <!-- Górny pasek -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="app-title">Danaid</span>
+            </div>
+            <div class="topbar-center">
+                <div class="connection-status">
+                    <span id="connection-status-dot" class="status-dot offline"></span>
+                    <span id="connection-status-text" class="status-text">Offline</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <button type="button" class="logout-btn" onclick="logout()">Wyloguj</button>
+            </div>
+        </header>
+
+        <div class="chat-layout">
+            <!-- Lewy panel - Lista znajomych -->
+            <aside class="friends-panel">
+                <header class="friends-header">
+                    <button type="button" class="add-friend-btn" onclick="showAddFriendModal()">
+                        Dodaj znajomego
+                    </button>
+                </header>
+
+                <!-- Tu JS dorysuje listę znajomych -->
+                <div id="friends-container" class="friends-list">
+                    <!-- dynamicznie wypełniane w chat.js -->
+                </div>
+            </aside>
+
+            <!-- Główny panel czatu -->
+            <main class="chat-panel">
+                <!-- Nagłówek aktualnej rozmowy -->
+                <header class="chat-header">
+                    <div class="chat-header-main">
+                        <div class="current-chat-meta">
+                            <div id="current-chat-name" class="chat-name">Brak rozmowy</div>
+                            <div id="current-chat-status" class="chat-status">Wybierz znajomego z listy</div>
+                        </div>
+                    </div>
+                    <div class="chat-header-actions">
+                        <button
+                            id="clear-messages-btn"
+                            type="button"
+                            class="chat-action-btn"
+                        >
+                            Wyczyść historię
+                        </button>
+                    </div>
+                </header>
+
+                <!-- Obszar wiadomości -->
+                <section id="messages-area" class="messages-area">
+                    <!-- wiadomości będą wstrzykiwane przez chat.js -->
+                </section>
+
+                <!-- Pole wpisywania wiadomości -->
+                <footer class="message-input-bar">
+                    <textarea
+                        id="message-input"
+                        class="message-input"
+                        placeholder="Napisz wiadomość..."
+                        rows="2"
+                    ></textarea>
+                    <button
+                        id="message-send-btn"
+                        type="button"
+                        class="send-btn"
+                    >
+                        Wyślij
+                    </button>
+                </footer>
+            </main>
+        </div>
+
+        <!-- Debug console -->
+        <section id="debug-console" class="debug-console hidden">
+            <header class="debug-console-header">
+                <span>Debug console</span>
+                <div class="debug-console-actions">
+                    <button id="debug-console-clear" type="button">Wyczyść</button>
+                    <button id="debug-console-close" type="button">Zamknij</button>
+                </div>
+            </header>
+            <pre id="debug-console-log" class="debug-console-body"></pre>
+        </section>
+
+        <!-- Przycisk do otwierania debug console (np. w rogu) -->
+        <button
+            id="debug-console-toggle"
+            type="button"
+            class="debug-toggle-btn"
+        >
+            ◼
+        </button>
+
+        <!-- Modal dodawania znajomego -->
+        <div id="add-friend-modal" class="modal hidden">
+            <div class="modal-backdrop" onclick="closeAddFriendModal()"></div>
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h3>Dodaj znajomego</h3>
+                    <button
+                        type="button"
+                        class="modal-close-btn"
+                        onclick="closeAddFriendModal()"
+                    >
+                        ×
+                    </button>
+                </header>
+                <div class="modal-body">
+                    <label for="friend-username">Nazwa użytkownika</label>
+                    <input
+                        id="friend-username"
+                        type="text"
+                        class="modal-input"
+                        placeholder="np. Alice"
+                        onkeydown="handleAddFriendKeydown(event)"
+                    >
+                </div>
+                <footer class="modal-footer">
+                    <button
+                        type="button"
+                        class="modal-btn"
+                        onclick="closeAddFriendModal()"
+                    >
+                        Anuluj
+                    </button>
+                    <button
+                        type="button"
+                        class="modal-btn primary"
+                        onclick="addFriend()"
+                    >
+                        Dodaj
+                    </button>
+                </footer>
+            </div>
+        </div>
+
+        <!-- Toasty -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <!-- Skrypty -->
+    <script src="console.js"></script>
+    <script src="signal_crypto.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>
