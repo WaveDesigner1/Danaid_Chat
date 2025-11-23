@@ -1,3 +1,5 @@
+![Logo projektu](./background.png)
+
 # Danaid Chat (local) – szyfrowany czat E2EE na Node.js
 
 > Lokalny, edukacyjny komunikator typu „czat 1:1” z end‑to‑end encryption, oparty o **Node.js + Express** i pliki **JSON** jako bazę danych.  
@@ -222,4 +224,3 @@ Główne kierunki:
 Projekt jako **kod edukacyjny** do własnych eksperymentów z kryptografią i bezpieczeństwem.
 
 
-![Logo projektu](./background.png)
