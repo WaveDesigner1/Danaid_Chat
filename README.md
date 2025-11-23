@@ -149,9 +149,10 @@ Jeśli repozytorium nie zawiera certów (nie powinno w wersji publicznej), wygen
    To wygeneruje dwa pliki – `.key` i `.pem` (nazwy możesz dostosować, by pasowały do tego, co jest ustawione w `server-https.js`, albo zmienić ścieżki w samym pliku).
 
 4. Upewnij się, że zainstalowałeś lokalny CA od mkcert, żeby przeglądarka ufała certyfikatowi. Jeżeli nie:
-   
+5. 
+   ```bash
    mkcert -install
-   
+   ```
 ### 7. Start serwera HTTPS
 
 Z katalogu głównego projektu:
