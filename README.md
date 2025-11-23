@@ -220,3 +220,6 @@ Główne kierunki:
 ## 📜 Licencja
 
 Projekt jako **kod edukacyjny** do własnych eksperymentów z kryptografią i bezpieczeństwem.
+
+
+![Logo projektu](./background.png)
