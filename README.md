@@ -186,13 +186,16 @@ https://chat.danaid:8443/login.html
 Na dzień backupu:
 
 - działają:
-  - **rejestracja** (z zapisaniem użytkownika w JSON + serverSignature),
-  - **logowanie** (challenge–response, PBKDF2, JWT),
-  - **dodawanie znajomych** (dwustronna relacja, tworzenie pliku konwersacji),
-- frontend czatu (`chat.html` + `chat.js`) i warstwa E2EE (`signal_crypto.js`) są w fazie rozwijania – celem jest:
-  - wprowadzenie **identity keys**, **prekey bundle**,
-  - handshake **X3DH-lite**,
-  - pełny **Double Ratchet** (w stylu Signal).
+  - **rejestracja** (zapis użytkownika w JSON, PBKDF2 + sól, serverSignature nad rekordem),
+  - **logowanie** (challenge–response, PBKDF2 po stronie klienta, podpis kluczem prywatnym, JWT),
+  - **dodawanie znajomych** (dwustronna relacja, zapis publicznych kluczy znajomych),
+  - frontend czatu (chat.html + chat.js) i warstwa szyfrowania (signal_crypto.js) są w trakcie przebudowy.
+    - Aktualnie dostępny jest symetryczny chain-ratchet (wersja DEV), a kolejne etapy obejmują:
+      
+      **wprowadzenie identity keypair na użytkownika,**
+      **publikowanie prekey bundle w pliku użytkownika,**
+      **handshake X3DH-lite do wyliczania prawdziwego initial rootKey,**
+      **rozszerzenie ratchetowania do pełnego Double Ratchet (DH-ratchet + chain-ratchety), zgodnie z modelem Signal.**
 
 Szczegółowe opisy dla devów znajdziesz w osobnych plikach dokumentacji:
 
