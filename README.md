@@ -199,7 +199,7 @@ Szczegółowe opisy dla devów znajdziesz w osobnych plikach dokumentacji:
 - [register_dev.md](register_dev.md)
 - [login_dev.md](login_dev.md)
 - [friends_dev.md](friends_dev.md)
-- [messeges_dev.md](messeges_dev.md) 
+- [messages_dev.md](messages_dev.md) 
 
 ---
 
