@@ -218,7 +218,7 @@ Główne kierunki:
 - X3DH-lite jako źródło prawdziwego `rootKey`
 - pełny Double Ratchet z DH‑ratchetami
 - obsługa wiadomości poza kolejnością, migracje JSON
-- hardening backendu (walidacja, rate limiting, HTTPS itp.)
+- hardening backendu (walidacja, rate limiting, ochrona plików, JWT)
 
 ---
 
