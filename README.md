@@ -192,10 +192,10 @@ Na dzień backupu:
   - frontend czatu (chat.html + chat.js) i warstwa szyfrowania (signal_crypto.js) są w trakcie przebudowy.
     - Aktualnie dostępny jest symetryczny chain-ratchet (wersja DEV), a kolejne etapy obejmują:
       
-      **wprowadzenie identity keypair na użytkownika,**
-      **publikowanie prekey bundle w pliku użytkownika,**
-      **handshake X3DH-lite do wyliczania prawdziwego initial rootKey,**
-      **rozszerzenie ratchetowania do pełnego Double Ratchet (DH-ratchet + chain-ratchety), zgodnie z modelem Signal.**
+      - wprowadzenie identity keypair na użytkownika,
+      - publikowanie prekey bundle w pliku użytkownika,
+      - handshake X3DH-lite do wyliczania prawdziwego initial rootKey,
+      - rozszerzenie ratchetowania do pełnego Double Ratchet (DH-ratchet + chain-ratchety), zgodnie z modelem Signal.
 
 Szczegółowe opisy dla devów znajdziesz w osobnych plikach dokumentacji:
 
